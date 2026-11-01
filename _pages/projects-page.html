@@ -1,0 +1,156 @@
+---
+layout: default
+title: Software
+permalink: /projects-page
+comments: false
+---
+
+<style>
+/* Projects Page Clean Grid Styling */
+
+/* Featured Section Grid Alignment */
+.featured-posts {
+    margin-bottom: 4rem;
+}
+
+.featured-posts .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 0 -15px;
+    gap: 0;
+}
+
+.featured-posts .row > [class*="col-"] {
+    display: flex;
+    align-items: stretch;
+    padding: 0 15px;
+}
+
+/* Ensure proper grid spacing */
+.featured-posts .mb-30px {
+    margin-bottom: 30px !important;
+}
+
+/* All Projects Section */
+.recent-posts {
+    margin-top: 2rem;
+}
+
+.recent-posts .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 0 -15px;
+    gap: 0;
+}
+
+.recent-posts .row > [class*="col-"] {
+    display: flex;
+    align-items: stretch;
+    padding: 0 15px;
+}
+
+/* Ensure proper grid spacing for all projects */
+.recent-posts .mb-30px {
+    margin-bottom: 30px !important;
+}
+
+/* Responsive grid adjustments for featured items */
+@media (max-width: 1199.98px) and (min-width: 992px) {
+    /* Large tablets - 2 columns for featured */
+    .featured-posts .row > .col-lg-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+    /* Keep 3 columns for all projects on large tablets */
+    .recent-posts .row > .col-lg-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+@media (max-width: 991.98px) and (min-width: 768px) {
+    /* Medium tablets - 2 columns for both */
+    .featured-posts .row > .col-lg-4,
+    .featured-posts .row > .col-md-6,
+    .recent-posts .row > .col-lg-4,
+    .recent-posts .row > .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 767.98px) and (min-width: 576px) {
+    /* Small tablets - 2 columns */
+    .featured-posts .row > .col-lg-4,
+    .featured-posts .row > .col-md-6,
+    .featured-posts .row > .col-sm-6,
+    .recent-posts .row > .col-lg-4,
+    .recent-posts .row > .col-md-6,
+    .recent-posts .row > .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* Mobile phones - single column */
+    .featured-posts .row > .col-lg-4,
+    .featured-posts .row > .col-md-6,
+    .featured-posts .row > .col-sm-6,
+    .recent-posts .row > .col-lg-4,
+    .recent-posts .row > .col-md-6,
+    .recent-posts .row > .col-sm-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+</style>
+
+{% comment %}
+Featured section — switched off while there is a single software entry.
+To bring it back, remove this {% comment %} … {% endcomment %} wrapper
+(the pages still use `featured: true` in their front matter).
+
+{% if page.url == "/projects-page" %}
+<section class="container featured-posts">
+    <h3 class="section-title">Featured</h3>
+    <div class="row">
+        {% for post in site.posts %}
+        {% if post.featured == true %}
+        {% include featuredbox.html %}
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endcomment %}
+
+<!-- Posts Index
+================================================== -->
+<div class="container recent-posts">
+
+    <h3 class="section-title">All Software</h3>
+
+    <div class="row">
+
+        {% for post in site.posts %}
+        {% include postbox.html %}
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-- Pagination
+================================================== -->
+<div class="bottompagination">
+    <div class="pointerup"><i class="fa fa-caret-up"></i></div>
+    <span class="navigation" role="navigation">
+    {% include pagination.html %}
+</span>
+</div>

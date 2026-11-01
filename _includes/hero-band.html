@@ -1,0 +1,58 @@
+{%- comment -%}
+Homepage hero: a tall photo band (campus photo, portrait, social icons) beside the
+name, title and About text. Photo settings come from `about_backdrop` in _config.yml.
+{%- endcomment -%}
+{%- assign bd = site.about_backdrop -%}
+<div class="container hero">
+  <div class="hero__grid">
+
+    <aside class="hero__band" aria-label="Photo">
+      {%- if bd.image -%}
+      <picture>
+        {%- if bd.image_webp -%}
+        <source type="image/webp"
+                srcset="{{ bd.image_small_webp | default: bd.image_webp | relative_url }} 320w, {{ bd.image_webp | relative_url }} 640w"
+                sizes="(min-width: 900px) 360px, 100vw">
+        {%- endif -%}
+        <img class="hero__bg" src="{{ bd.image | relative_url }}"
+             {% if bd.image_small %}srcset="{{ bd.image_small | relative_url }} 320w, {{ bd.image | relative_url }} 640w" sizes="(min-width: 900px) 360px, 100vw"{% endif %}
+             width="640" height="1280" alt="" fetchpriority="high" decoding="async">
+      </picture>
+      {%- endif -%}
+      {%- if bd.caption -%}
+      <span class="hero__cap">{{ bd.caption }}{% if bd.caption_sub %} · {{ bd.caption_sub }}{% endif %}</span>
+      {%- endif -%}
+      <div class="hero__who">
+        {%- if site.about_profile_image -%}
+        <img class="hero__portrait" src="{{ site.about_profile_image | relative_url }}" alt="{{ site.name | escape }}" width="150" height="150" fetchpriority="high" decoding="async">
+        {%- endif -%}
+        <ul class="hero__icons" aria-label="Profiles">
+          {%- if site.github_username -%}
+          <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a></li>
+          {%- endif -%}
+          {%- if site.linkedin_username -%}
+          <li><a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+          {%- endif -%}
+          {%- if site.orcid_username -%}
+          <li><a href="https://orcid.org/{{ site.orcid_username }}" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID"><i class="fab fa-orcid"></i></a></li>
+          {%- endif -%}
+          {%- for link in site.additional_links -%}
+          <li><a href="{{ link.url }}" target="_blank" rel="noopener" aria-label="{{ link.title | escape }}" title="{{ link.title | escape }}"><i class="{{ link.icon }}"></i></a></li>
+          {%- endfor -%}
+          {%- if site.email -%}
+          <li><a href="{{ "/email/" | relative_url }}" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+    </aside>
+
+    <div class="hero__intro">
+      <h1 class="hero__name">{{ site.name | escape }}</h1>
+      {%- if site.title -%}<p class="hero__role">{{ site.title | escape }}</p>{%- endif -%}
+      <div class="hero__about">
+        {{ site.about_content | strip | markdownify }}
+      </div>
+    </div>
+
+  </div>
+</div>

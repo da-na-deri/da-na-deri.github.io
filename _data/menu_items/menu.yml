@@ -1,0 +1,17 @@
+docs_list_title: Site Navigation
+docs:
+
+  - title: Home
+    url: /
+
+  - title: Publications
+    url: /publications
+
+  - title: Software
+    url: /projects-page
+
+  - title: CV
+    url: /cv/
+
+  - title: Blog
+    url: /blog

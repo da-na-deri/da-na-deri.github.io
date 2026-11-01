@@ -1,0 +1,35 @@
+# =============================================================================
+# EXPERIENCE — most recent first
+# =============================================================================
+
+- layout: left
+  company: CEREMADE, Université Paris Dauphine – PSL
+  link: www.ceremade.dauphine.fr
+  job_title: PhD Researcher in Statistics
+  dates: 2024 – Present
+  description: |
+    Research in Bayesian inference and computation, focusing on Monte Carlo methods
+    and model-evidence estimation. Developed and maintain
+    [`ECMLE`](https://cran.r-project.org/package=ECMLE), a CRAN-published R package
+    with documentation, reproducible examples and tests. Reproducible numerical
+    experiments in R; collaboration with co-authors on methodology, implementation and
+    scientific writing.
+
+- layout: left
+  company: Allameh Tabataba'i University, Tehran
+  job_title: Graduate Research in Data Science
+  dates: 2020 – 2023
+  description: |
+    Bayesian penalized regression for high-dimensional Raman spectroscopy data in a
+    disease-diagnosis application; nonparametric regression for unstructured data
+    (peer-reviewed publication and conference presentation); master's thesis on
+    learning dynamic Bayesian networks for brain–machine interface data.
+
+- layout: left
+  company: Education Department, Marivan, Kurdistan, Iran
+  job_title: High-School Mathematics Teacher
+  dates: 2017 – 2022
+  description: |
+    Taught mathematics for five academic years and developed structured instructional
+    materials, explaining quantitative concepts and analytical problem-solving to
+    diverse learners.

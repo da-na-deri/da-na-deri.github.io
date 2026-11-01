@@ -1,0 +1,22 @@
+# =============================================================================
+# EXTERNAL BLOG POSTS — links to posts hosted elsewhere (Medium, etc.)
+# =============================================================================
+# For posts hosted on this site, use _blog_posts/*.md instead.
+# Add an entry by removing the leading `#` from the template block below and
+# filling in the fields. The `[]` at the bottom keeps this file as a valid empty
+# YAML list until you add real entries — DO NOT REMOVE IT until you've added at
+# least one real entry above.
+# =============================================================================
+
+# - title: "Post title"
+#   date: 2024-01-01
+#   display_date: "January 2024"
+#   categories: "Topic"
+#   description: "One- or two-sentence summary."
+#   image: "https://via.placeholder.com/786x400.png?text=Post+Thumbnail"
+#   featured: false
+#   links:
+#     - platform: "Medium"
+#       url: "https://medium.com/@your-handle/post-slug"
+
+[]

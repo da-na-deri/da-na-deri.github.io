@@ -1,0 +1,183 @@
+---
+layout: default
+disqus: false
+archive: false
+post_class: post-template
+---
+
+<!-- Reading progress bar -->
+<div class="reading-progress" aria-hidden="true"></div>
+
+<!-- Begin Article
+================================================== -->
+<div class="blog-post-container">
+    <div class="blog-post-wrapper{% if page.direction == 'rtl' %} rtl-wrapper{% endif %}">
+        
+        {% unless page.direction == 'rtl' %}
+        <!-- TOC Sidebar (LTR: left side) -->
+        <aside class="toc-sidebar">
+            <nav class="toc-nav" aria-label="Table of contents">
+                <h4 class="toc-title">Contents</h4>
+                {% include toc.html html=content h_min=2 h_max=3 %}
+            </nav>
+        </aside>
+        {% endunless %}
+
+        <!-- Main Post Content -->
+        <article class="blog-post-content{% if page.direction == 'rtl' %} rtl{% endif %}"{% if page.direction == 'rtl' %} dir="rtl" lang="{{ page.lang | default: 'ar' }}"{% endif %}>
+            {% assign author = site.data.members.author.authors[page.author] %}
+
+            <header class="post-header">
+                <!-- Post Title -->
+                <h1 class="posttitle">{{ page.title }}</h1>
+                
+                <!-- Post Meta -->
+                <div class="post-meta">
+                    <span class="post-author">{{ page.author | default: site.name }}</span>
+                    <span class="post-date"><time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time></span>
+                </div>
+            </header>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            {% if site.adsense == "enabled" %}
+                {% include adsense-under-header.html %}
+            {% endif %}
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            {% if page.image %}
+            <div class="featured-image-wrapper">
+            {% if page.image contains '.mp4' or page.image contains '.webm' %}
+            <video class="featured-image img-fluid lazy-video" loop muted playsinline data-autoplay preload="none">
+                <source data-src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}" type="video/mp4">
+            </video>
+            {% elsif site.lazyimages == "enabled" %}
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}" alt="{{ page.title }}" loading="lazy" decoding="async">
+            {% elsif page.image_dark %}
+            <img class="featured-image img-fluid theme-light-only" src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy" decoding="async">
+            <img class="featured-image img-fluid theme-dark-only" src="{{ page.image_dark | relative_url }}" alt="{{ page.title }}" loading="lazy" decoding="async">
+            {% else %}
+            <img class="featured-image img-fluid" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}" alt="{{ page.title }}" loading="lazy" decoding="async">
+            {% endif %}
+            </div>
+            {% endif %}
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                {{content}}
+            </div>
+
+            <!-- Rating -->
+<!--            {% if page.rating %}-->
+<!--            <div class="rating mb-4 d-flex align-items-center">-->
+<!--                <strong class="mr-1">Rating:</strong> {% include star_rating.html %}-->
+<!--            </div>-->
+<!--            {% endif %}-->
+
+            <!-- Post Date -->
+            <footer class="post-footer">
+                <p>
+                <small>
+                    <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>           
+                    {% if page.last_modified_at %}
+                    (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
+                    {% endif %}
+                    </small>
+                </p>
+
+                <!-- Post Categories -->
+                <div class="after-post-cats">
+                    <ul class="tags mb-4">
+                        {% assign sortedCategories = page.categories | sort %}
+                        {% for category in sortedCategories %}
+                        <li>
+                            <a class="smoothscroll" href="{{ '/categories' | relative_url }}#{{ category | replace: " ","-" }}">{{ category }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- End Categories -->
+
+                <!-- Post Tags -->
+                <div class="after-post-tags">
+                    <ul class="tags">
+                        {% assign sortedTags = page.tags | sort %}
+                        {% for tag in sortedTags %}
+                        <li>
+                            <a class="smoothscroll" href="{{ '/tags' | relative_url }}#{{ tag | replace: " ","-" }}">#{{ tag }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- End Tags -->
+
+                <!-- Prev/Next -->
+                <nav class="post-navigation">
+                    {% if page.previous.url %}
+                    <a class="prev" href="{{ page.previous.url | relative_url }}">&laquo; {{page.previous.title}}</a>
+                    {% endif %}
+                    {% if page.next.url %}
+                    <a class="next" href="{{ page.next.url | relative_url }}">{{page.next.title}} &raquo;</a>
+                    {% endif %}
+                </nav>
+            </footer>
+
+        </article>
+        <!-- End Post -->
+
+        {% if page.direction == 'rtl' %}
+        <!-- TOC Sidebar (RTL: right side) -->
+        <aside class="toc-sidebar">
+            <nav class="toc-nav" aria-label="Table of contents">
+                <h4 class="toc-title">ناوەڕۆک</h4>
+                {% include toc.html html=content h_min=2 h_max=3 %}
+            </nav>
+        </aside>
+        {% endif %}
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+<!-- {% if page.comments != false %}
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                {% include disqus.html %}
+            </div>
+        </div>
+    </div>
+{% endif %} -->
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first:
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+<!--{% if page.rating %}-->
+<!--<script type="application/ld+json">-->
+<!--{-->
+<!--  "@context": "http://schema.org/",-->
+<!--  "@type": "Review",-->
+<!--  "itemReviewed": {-->
+<!--    "@type": "Thing",-->
+<!--    "name": "{{ page.title }}"-->
+<!--  },-->
+<!--  "author": {-->
+<!--    "@type": "Person",-->
+<!--    "name": "{{ author.display_name }}"-->
+<!--  },-->
+<!--  "datePublished": "{{ page.date | date:"%Y-%m-%d" }}",-->
+<!--  "reviewRating": {-->
+<!--    "@type": "Rating",-->
+<!--    "ratingValue": "{{ page.rating }}",-->
+<!--    "bestRating": "5"-->
+<!--  }-->
+<!--}-->
+<!--</script>-->
+<!--{% endif %}-->
+

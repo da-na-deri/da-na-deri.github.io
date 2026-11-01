@@ -1,0 +1,20 @@
+# =============================================================================
+# SOFTWARE — homepage section (title set by `projects_title` in _config.yml)
+# =============================================================================
+
+- layout: left
+  name: ECMLE
+  link: cran.r-project.org/package=ECMLE
+  github: da-na-deri/ECMLE
+  description: >
+    <b>R package implementing the Elliptical Covering Marginal Likelihood Estimator.</b>
+    Approximates the marginal likelihood from posterior draws and log-posterior
+    evaluations by covering the high posterior density region with non-overlapping
+    ellipsoids. Stabilises harmonic-mean evidence estimation and handles multimodal
+    posteriors. Published on CRAN (v0.1.0, March 2026); author and maintainer.
+    <a href="/projects/ecmle/">Read more →</a><br>
+    <span style="color:#888">R · Bayesian computation · GPL-3</span><br>
+    <img alt="CRAN version" src="https://www.r-pkg.org/badges/version/ECMLE">
+    <img alt="CRAN downloads" src="https://cranlogs.r-pkg.org/badges/grand-total/ECMLE">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/da-na-deri/ECMLE">
+

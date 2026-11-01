@@ -1,0 +1,12 @@
+<div class="container publication-container{% if include.selected %} selected-section{% endif %}">
+  <h3 class="section-title">{{ include.title | default: site.publication_title | default: "Publications" }}</h3>
+  <div class="publication-list">
+    {% for publication in site.data.publication %}
+    {% if include.selected and publication.selected != true %}{% continue %}{% endif %}
+    {% include {{ publication.layout | default: "left-publication" | append: ".html" }} item=publication %}
+    {% endfor %}
+  </div>
+  {% if include.selected %}
+  <p class="section-more"><a href="{{ "/publications" | relative_url }}">All publications →</a></p>
+  {% endif %}
+</div>

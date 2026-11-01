@@ -1,0 +1,32 @@
+<div class="row clearfix layout layout-left">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-print-12 details">
+      {%- comment -%} Title is a link when `link:` is set; the GitHub icon links to the repo. {%- endcomment -%}
+      {%- if include.item.name -%}
+      <h3>{% if include.item.link %}{% include a.html href=include.item.link class="title-link" %}{{ include.item.name }}</a>{% else %}{{ include.item.name }}{% endif %}{% if include.item.badge %} {{ include.item.badge }}{% endif %}</h3>
+      {%- endif -%}
+      {%- if include.item.company -%}
+      <h3>{% if include.item.link %}{% include a.html href=include.item.link class="title-link" %}{{ include.item.company }}</a>{% else %}{{ include.item.company }}{% endif %}{% if include.item.badge %} {{ include.item.badge }}{% endif %}</h3>
+      {%- endif -%}
+
+      {%- if include.item.github -%}
+      <p class="no-print entry-links">
+        <a href="https://github.com/{{ include.item.github }}" target="_blank" rel="noopener" title="{{ include.item.name | strip_html }} on GitHub">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </p>
+      {%- endif -%}
+      {%- if include.item.job_title -%}<h4>{{ include.item.job_title }}</h4>{%- endif -%}
+      {%- if include.item.qualification -%}<h4>{{ include.item.qualification }}</h4>{%- endif -%}
+      {%- if include.item.dates -%}<p>{{ include.item.dates }}</p>{%- endif -%}
+      {% for job in include.item.jobs %}
+        <h4>{{ job.title }}</h4>
+        <p>{{ job.dates }}</p>
+      {% endfor %}
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-9 col-print-12">
+      {%- if include.item.quote -%}
+        <p class="quote">{{ include.item.quote }}</p>
+      {%- endif -%}
+      {{ include.item.description | strip | markdownify }}
+    </div>
+</div>

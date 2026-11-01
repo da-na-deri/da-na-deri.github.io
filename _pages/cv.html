@@ -1,0 +1,29 @@
+---
+layout: default
+title: CV
+permalink: /cv/
+comments: false
+---
+{%- comment -%}
+CV page. Drop your PDF at  files/cv.pdf  and it appears here, viewable and scrollable in the page,
+with a download button. Until the file exists, a short placeholder is shown instead.
+{%- endcomment -%}
+{%- assign cv_file = site.static_files | where: "path", "/files/cv.pdf" | first -%}
+<div class="container cv-page">
+  <div class="cv-head">
+    <h3 class="section-title">Curriculum vitae</h3>
+    {%- if cv_file -%}
+    <a class="btn-cv" href="{{ '/files/cv.pdf' | relative_url }}" download="Dana-Naderi-CV.pdf"><i class="fas fa-download" aria-hidden="true"></i> Download PDF</a>
+    {%- endif -%}
+  </div>
+
+  {%- if cv_file -%}
+  <div class="cv-frame">
+    <object data="{{ '/files/cv.pdf' | relative_url }}#view=FitH&toolbar=0" type="application/pdf" aria-label="CV (PDF)">
+      <p>Your browser cannot display PDFs inline. <a href="{{ '/files/cv.pdf' | relative_url }}">Open the CV</a> instead.</p>
+    </object>
+  </div>
+  {%- else -%}
+  <p class="cv-empty">The CV will be available here shortly.</p>
+  {%- endif -%}
+</div>

@@ -1,0 +1,294 @@
+# Site
+# Site URL configuration:
+#  - For a USER site (repo named `<user>.github.io`):
+#       url:     "https://<user>.github.io"
+#       baseurl: ""
+#  - For a PROJECT site (any other repo name):
+#       url:     "https://<user>.github.io"
+#       baseurl: "/<repo-name>"      <-- the leading slash matters
+#  - For local development with `jekyll serve`, the safest setting is:
+#       url:     ""
+#       baseurl: ""
+#
+# Configured for the user site da-na-deri/da-na-deri.github.io:
+url: "https://da-na-deri.github.io"
+baseurl: ""
+description: "Personal website of Dana Naderi, PhD student in Statistics at CEREMADE, Université Paris Dauphine – PSL, working on Bayesian model selection and evidence estimation."
+image: images/profile.jpg
+logo: 'images/profile.jpg'
+favicon: 'images/favicon-64.png'   # circular; generated from images/profile.jpg
+# google_analytics: 'UA-XXXXXXXX-X'
+#disqus: 'your-disqus-shortname'
+#mailchimp-list: 'https://example.us11.list-manage.com/subscribe/post?u=XXXXXXXX&amp;id=XXXXXXXX'
+include:
+  - _pages
+  - _static
+#permalink: /:title/
+
+
+
+
+# --------------------------------------------------------------------------------------
+
+repository: https://github.com/da-na-deri/da-na-deri.github.io
+# favicon: Directory of your favicon (eg. images/favicon.ico)(optional)
+
+# Personal info
+name: Dana Naderi
+title: PhD Student in Statistics · CEREMADE, Université Paris Dauphine – PSL
+email: naderi[at]ceremade[dot]dauphine[dot]fr
+#phone: Your phone number (optional)
+#website: https://da-na-deri.github.io
+
+# Dark Mode (true/false/never)
+darkmode: true
+
+# =============================================================================
+# COLOR PALETTE CONFIGURATION
+# =============================================================================
+# Central theme configuration - change these values to switch palettes site-wide
+#
+# DARK MODE BACKGROUND OPTIONS:
+#   - "near-black"    : #0f0f0f  (Default - deep black, elegant)
+#   - "pure-black"    : #000000  (OLED friendly, maximum contrast)
+#   - "charcoal"      : #121212  (Material Design dark, softer)
+#   - "slate"         : #1a202c  (Blue-tinted, original theme)
+#   - "midnight"      : #0d1117  (GitHub dark, subtle blue)
+#
+# LIGHT MODE BACKGROUND OPTIONS:
+#   - "white"         : #ffffff  (Default - pure white)
+#   - "snow"          : #fafafa  (Slightly off-white, easier on eyes)
+#   - "cream"         : #fffdf7  (Warm white, paper-like)
+#   - "cool-gray"     : #f8fafc  (Cool tinted white)
+#
+# ACCENT COLOR OPTIONS:
+#   - "vivid-red"     : #ef4444  (Default - bright, prominent red)
+#   - "crimson"       : #dc2626  (Deeper red, more classic)
+#   - "coral"         : #f97316  (Orange-red, warm)
+#   - "rose"          : #e11d48  (Pink-red, modern)
+#   - "ruby"          : #be123c  (Dark red, sophisticated)
+#
+# NAVBAR STYLE OPTIONS:
+#   - "dark"          : Dark navbar (Default - #0f0f0f, matches dark mode)
+#   - "darker"        : Same as dark (#0f0f0f)
+#   - "pure-black"    : Pure black navbar (#000000)
+#   - "slate"         : Slate blue navbar (#1e293b)
+# =============================================================================
+# // =========================================================================
+# // BADGE SYSTEM - Announcement badges with colored dot indicators
+# // =========================================================================
+# //
+# // USAGE (in HTML/Markdown):
+# //
+# //   PILL BADGES (subtle background with colored dot):
+# //     <span class="badge badge-new">New</span>
+# //     <span class="badge badge-hot">Trending</span>
+# //     <span class="badge badge-update">Updated</span>
+# //     <span class="badge badge-pinned">Pinned</span>
+# //     <span class="badge badge-soon">Soon</span>
+# //     <span class="badge badge-accent">Featured</span>   (uses site accent color)
+# //
+# //   MINIMAL BADGES (inline with text, just dot + text):
+# //     <span class="badge-minimal badge-new">New collaboration</span>
+# //     <span class="badge-minimal badge-hot">Hot topic</span>
+# //
+# //   WITH PULSE ANIMATION:
+# //     <span class="badge badge-new badge-pulse">New</span>
+# //
+# // =========================================================================
+
+palette:
+  dark_bg: "midnight"        # Dark mode background
+  light_bg: "cream"          # Light mode background
+  accent: "crimson"          # Accent color (used for highlights, links hover, etc.)
+  navbar: "darker"           # Navbar style
+
+# Social links — uncomment and fill in the ones you use
+#twitter_username: your_twitter_handle
+#twitter:
+#  username: your_twitter_handle
+#  card: summary
+github_username: da-na-deri
+#medium_username: your-medium-username
+#stackoverflow_username: "00000001"
+#dribbble_username: your-handle
+#facebook_username: your-handle
+#flickr_username: your-handle
+#instagram_username: your-handle
+linkedin_username: dana-naderi-b40786143
+#xing_username: your-handle
+#pinterest_username: your-handle
+#youtube_username: your-handle
+# googleplus_username: +your-handle
+orcid_username: 0009-0009-8880-1219
+# googlescholar_username: 5N8p4WcAAAAJ
+
+
+# Additional icon links — add any extra links you want shown next to your social icons
+additional_links:
+ - title: Google Scholar
+   icon: fab fa-google-scholar
+   url: https://scholar.google.com/citations?user=5N8p4WcAAAAJ&hl=en&oi=sra
+  # - title: ResearchGate
+  #   icon: fab fa-researchgate
+  #   url: https://www.researchgate.net/profile/Your-Profile
+  # - title: Kaggle
+  #   icon: fab fa-kaggle
+  #   url: https://www.kaggle.com/your-handle
+
+
+#- title: another link
+#icon: font awesome brand icon name (eg. fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
+#url: Link url (eg. https://google.com)
+
+# Google Analytics and Tag Manager
+# Using more than one of these may cause issues with reporting
+# gtm: "GTM-0000000"
+# gtag: "UA-00000000-0"
+# google_analytics: "UA-00000000-0"
+
+# About Section
+# about_title: About Me (Use this to override about section title)
+about_profile_image: images/profile.jpg #Directory of profile image (eg. images/profile.jpg)
+# Photo panel shown behind the profile picture in the About section (homepage).
+# Remove or comment out this block to go back to the plain layout.
+about_backdrop:
+  image: assets/images/backdrop/cite-universitaire-640.jpg
+  image_small: assets/images/backdrop/cite-universitaire-320.jpg
+  image_webp: assets/images/backdrop/cite-universitaire-640.webp
+  image_small_webp: assets/images/backdrop/cite-universitaire-320.webp
+  caption: Cité universitaire de Paris
+  # credit: (own photo — no credit line needed)
+about_content: | # this will include new lines to allow paragraphs
+
+  <section>
+    <h3>About</h3>
+    <p>
+      I am a PhD student in Statistics at
+      <a href="https://www.ceremade.dauphine.fr/">CEREMADE</a>,
+      <a href="https://dauphine.psl.eu/">Université Paris Dauphine – PSL</a>,
+      supervised by Prof. Christian P. Robert and Dr. Kaniav Kamary. I joined
+      CEREMADE in September 2024. Before that, I completed an MSc in Data Science
+      and a BSc in Mathematics.
+    </p>
+  </section>
+
+  <section>
+    <h3>Research Interests</h3>
+    <p>
+      My research is in <strong>Bayesian statistics and computation</strong>, with a
+      focus on <strong>model selection</strong>. Bayesian model comparison rests on the
+      evidence, or marginal likelihood, an integral that is rarely available in closed
+      form, and much of my work concerns how to approximate it reliably from posterior
+      samples.
+    </p>
+  </section>
+
+  <section>
+    <h3>News</h3>
+    <ul>
+      <li><span class="badge badge-new">New</span> Contributed talk at <a href="https://maths.ed.ac.uk/events/mcqmc-2026">MCQMC 2026</a>, University of Edinburgh — June 2026</li>
+      <li>Talk at the <a href="https://mostly-monte-carlo.github.io/sem/2026/s2026_06.html">Mostly Monte Carlo Seminar</a>, PariSanté Campus, Paris — June 2026</li>
+      <li>Talk at the <a href="https://www.ceremade.dauphine.fr/fr/actualites/detail-de-lactualite/article/seminaire-jeunes-chercheurs-dana-naderi-jeudi-21-mai-2026.html">CEREMADE Young Researchers Seminar</a> — May 2026</li>
+      <li><span class="badge badge-new">New</span> Our paper <em><a href="https://doi.org/10.1007/s11222-026-10875-z">Approximating evidence via bounded harmonic means</a></em> is published in <em>Statistics and Computing</em>, vol. 36, article 120 — April 2026</li>
+      <li>R package <a href="https://cran.r-project.org/package=ECMLE"><code>ECMLE</code></a> released on CRAN — March 2026</li>
+      <li>Preprint <em><a href="https://arxiv.org/abs/2510.20617">Approximating evidence via bounded harmonic means</a></em> posted on arXiv — October 2025</li>
+      <li>Started my PhD at CEREMADE — September 2024</li>
+    </ul>
+  </section>
+
+
+# Projects Section
+projects_title: Software
+
+# Experience Section
+experience_title: Experience
+
+# Education Section
+education_title: Education #(Use this to override about education section title)
+publication_title: Publications
+skills_title: Skills
+# More Section
+# more_title: A Little More About Me #(Use this to override about more section title)
+
+
+# more content
+more_content: | # this will include new lines to allow paragraphs
+
+
+# Footer
+footer_show_references: true
+
+# Build settings
+#theme: modern-resume-theme (Use this is you are hosting your resume yourself)
+# remote_theme: sproogen/modern-resume-theme (Use this if you are hosting your resume on GitHub)
+#theme: jekyll-theme-hacker
+
+# Markdown processor settings
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# =============================================================================
+# CITATION STYLE CONFIGURATION
+# =============================================================================
+# Academic citation/reference style for blog posts.
+# Supported styles:
+#   - "apa"       : APA 7th Edition (Author, Year. Title. URL)
+#   - "ieee"      : IEEE (Author, "Title," Year. [Online]. Available: URL)
+#   - "chicago"   : Chicago Author-Date (Author. Year. "Title." URL)
+#   - "vancouver" : Vancouver/Numeric (Author. Title. Year. URL) [default]
+# =============================================================================
+citation_style: "apa"
+
+# Collections for internal blog posts (separate from project posts in _posts/)
+collections:
+  blog_posts:
+    output: true
+    permalink: /blog/:title/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: images/profile.jpg
+  - scope:
+      path: _posts
+    values:
+      layout: post
+      permalink: /projects/:title/
+  - scope:
+      path: _pages
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: blog_posts
+    values:
+      layout: post
+sass:
+  sass_dir: _sass
+  style: compressed
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-redirect-from
+
+exclude: [
+  "Gemfile",
+  "Gemfile.lock",
+  "node_modules",
+  "vendor/bundle/",
+  "vendor/cache/",
+  "vendor/gems/",
+  "vendor/ruby/",
+  "lib/",
+  "scripts/",
+  "docker-compose.yml",
+]

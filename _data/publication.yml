@@ -1,0 +1,121 @@
+# =============================================================================
+# PUBLICATIONS — most recent first.
+#   selected: true  -> also shown in "Selected Publications" on the homepage
+#   paper / arxiv / code / website / link -> buttons on the card
+#   details -> abstract shown in an expandable "Abstract" toggle
+# =============================================================================
+
+- layout: left-publication
+  selected: true
+  title: "Approximating evidence via bounded harmonic means"
+  venue: "Statistics and Computing, 36(3), article 120"
+  year: 2026
+  publication_type: Journal Article
+  authors:
+    - Dana Naderi
+    - Christian P. Robert
+    - Kaniav Kamary
+    - Darren Wraith
+  paper: https://doi.org/10.1007/s11222-026-10875-z
+  arxiv: https://arxiv.org/abs/2510.20617
+  code: https://github.com/da-na-deri/ECMLE
+  website: https://cran.r-project.org/package=ECMLE
+  gif: /images/ecmle-thumb-paper.gif        # card thumbnail, light mode
+  gif_dark: /images/ecmle-thumb-dark.gif    # card thumbnail, dark mode
+  cite:
+    - id: naderi_2026_evidence
+      type: article-journal
+      authors:
+        - family: Naderi
+          given: Dana
+        - family: Robert
+          given: Christian P.
+        - family: Kamary
+          given: Kaniav
+        - family: Wraith
+          given: Darren
+      title: "Approximating evidence via bounded harmonic means"
+      container-title: "Statistics and Computing"
+      volume: 36
+      issue: 3
+      page: 120
+      issued:
+        year: 2026
+      DOI: 10.1007/s11222-026-10875-z
+  details: |
+    Efficient Bayesian model selection relies on the model evidence or marginal
+    likelihood, whose computation often requires evaluating an intractable integral.
+    The harmonic mean estimator (HME) has long been a standard method of approximating
+    the evidence; while computationally simple, the version introduced by Newton and
+    Raftery (1994) potentially suffers from infinite variance. Following the approach
+    of Gelfand and Dey (1994) and Robert and Wraith (2009), we propose a practical
+    method based on an elliptical covering of the HPD region with non-overlapping
+    ellipsoids. The resulting estimator, the Elliptical Covering Marginal Likelihood
+    Estimator (ECMLE), eliminates the infinite-variance issue of the original HME,
+    allows exact volume computations, and can be used in multimodal settings. Across
+    several examples, ECMLE outperforms recent methods such as THAMES and shows lower
+    variance and more stable evidence approximations, even in challenging settings.
+
+    Open access (CC BY 4.0). Software: R package
+    [`ECMLE`](https://cran.r-project.org/package=ECMLE) on CRAN.
+
+- layout: left-publication
+  title: "Decoding Neural Signals: Invasive BMI Review"
+  venue: "Modern Technologies in Healthcare, CRC Press, pp. 151–211"
+  year: 2025
+  publication_type: Book Chapter
+  authors:
+    - Rezwan Firuzi
+    - Ayub Bokani
+    - Jahan Hassan
+    - Hamed Ahmadyani
+    - Mohammad Foad Abdi
+    - Dana Naderi
+    - Diako Ebrahimi
+  paper: https://doi.org/10.1201/9781003481959-9
+  arxiv: https://arxiv.org/abs/2211.03324
+  gif: /images/pub-bmi-light.gif
+  gif_dark: /images/pub-bmi-dark.gif
+  details: |
+    A review of invasive brain–machine interfaces (BMI): the biological and
+    engineering principles behind them, signal acquisition and decoding, and
+    applications beyond medicine. First circulated as an arXiv preprint in November
+    2022; published as a chapter of *Modern Technologies in Healthcare* (1st ed., CRC
+    Press, 2025).
+
+- layout: left-publication
+  title: "Bayesian Penalized Regression in High-Dimensional Data Analysis: A Case Study on Raman Spectroscopy for Disease Diagnosis"
+  venue: "TechRxiv preprint"
+  year: 2023
+  publication_type: Preprint
+  authors:
+    - Dana Naderi
+    - Mohammad Mahdavi
+    - Farzad Eskandari
+  paper: https://doi.org/10.36227/techrxiv.23574123
+  gif: /images/pub-raman-light.gif
+  gif_dark: /images/pub-raman-dark.gif
+  details: |
+    Bayesian penalized regression models with shrinkage priors for high-dimensional
+    Raman spectroscopy data, applied to disease detection from saliva and blood serum
+    samples, compared against standard machine learning methods.
+
+- layout: left-publication
+  title: "Nonparametric Regression Estimation under Kernel Polynomial Model for Unstructured Data"
+  venue: "Journal of Statistical Research of Iran, 17(1)"
+  year: 2022
+  publication_type: Journal Article
+  authors:
+    - Farzad Eskandari
+    - Sima Naghizade Ardebili
+    - Dana Naderi
+    - Mohammad Mahdavi
+    - Ali Fakhrae
+  paper: https://iranjournals.nlai.ir/handle/123456789/952748
+  gif: /images/pub-kpr-light.gif
+  gif_dark: /images/pub-kpr-dark.gif
+  details: |
+    A kernel polynomial regression model, built as a mixture of nonparametric
+    regression models combined with a bootstrap algorithm, for unstructured and
+    heterogeneous data. Presented at the 16th Iranian Statistics Conference,
+    University of Mazandaran.

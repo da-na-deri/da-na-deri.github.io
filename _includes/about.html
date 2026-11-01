@@ -1,0 +1,39 @@
+<div class="container intro-container">
+  <!-- <h2 class="section-title">{{ site.about_title | default: "About Me" }}</h2> -->
+  {%- assign bd = site.about_backdrop -%}
+  <div class="row clearfix about-row{% if bd.image %} about-row--backdrop{% endif %}">
+    {%- if bd.image -%}
+    <!-- Photo panel: a tall rounded card behind the profile column, spanning the About row.
+         Configured in _config.yml under `about_backdrop:`; credit is shown in the footer. -->
+    <div class="about-backdrop" aria-hidden="true">
+      <div class="about-backdrop__media">
+        <picture>
+          {%- if bd.image_webp -%}
+          <source type="image/webp"
+                  srcset="{{ bd.image_small_webp | default: bd.image_webp | relative_url }} 320w, {{ bd.image_webp | relative_url }} 640w"
+                  sizes="(min-width: 1200px) 263px, (min-width: 992px) 213px, 220px">
+          {%- endif -%}
+          <img src="{{ bd.image | relative_url }}"
+               {% if bd.image_small %}srcset="{{ bd.image_small | relative_url }} 320w, {{ bd.image | relative_url }} 640w"
+               sizes="(min-width: 1200px) 263px, (min-width: 992px) 213px, 220px"{% endif %}
+               width="640" height="1280" alt="" loading="lazy" decoding="async" fetchpriority="low">
+        </picture>
+      </div>
+      {%- if bd.caption -%}
+      <span class="about-backdrop__caption">
+        <span>{{ bd.caption }}</span>
+        {%- if bd.caption_sub -%}<span class="about-backdrop__caption-sub">{{ bd.caption_sub }}</span>{%- endif -%}
+      </span>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+    {%- if site.about_profile_image -%}
+      <div class="col-xs-12 col-sm-4 col-md-3 no-print about-media">
+        <img class="profile-img" src="{{ site.about_profile_image | relative_url }}" alt="{{ site.name | default: 'Profile photo' }}" fetchpriority="high" decoding="async" width="200" height="200">
+      </div>
+    {%- endif -%}
+    <div class="{{ 'col-xs-12 ' }}{%- if site.about_profile_image -%}col-sm-8 col-md-9 col-print-12{%- endif -%} about-text">
+      {{ site.about_content | strip | markdownify }}
+    </div>
+  </div>
+</div>

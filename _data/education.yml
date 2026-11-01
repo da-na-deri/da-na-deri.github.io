@@ -1,0 +1,23 @@
+# =============================================================================
+# EDUCATION — most recent first
+# =============================================================================
+
+- layout: left
+  name: Université Paris Dauphine – PSL (CEREMADE)
+  dates: 2024 – Present
+  qualification: PhD in Statistics
+  description: |
+    Supervised by Prof. Christian P. Robert and Dr. Kaniav Kamary.
+    Supported by a scholarship from the French Ministry for Europe and Foreign Affairs (MEAE).
+
+- layout: left
+  name: Allameh Tabataba'i University, Tehran
+  dates: 2020 – 2023
+  qualification: MSc in Data Science
+  description: |
+    Thesis: *Application of Learning Dynamic Bayesian Networks in Brain–Machine Interface*.
+
+- layout: left
+  name: Farhangian University, Tehran
+  dates: 2013 – 2017
+  qualification: BSc in Mathematics

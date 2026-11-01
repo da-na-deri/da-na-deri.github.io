@@ -1,0 +1,1064 @@
+---
+# Front matter comment to ensure Jekyll properly reads file.
+---
+
+@charset "utf-8";
+
+@import 'modern-resume-theme';
+
+.post-excerpt p {
+  display:inline;
+}
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+  "syntax",
+  "starsnonscss"
+;
+
+/* MathJax styles for proper math rendering */
+.MathJax_Display {
+  text-align: center !important;
+  margin: 1em 0 !important;
+}
+
+.MathJax {
+  outline: 0;
+  display: inline-block;
+  line-height: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  float: none;
+  direction: ltr;
+  max-width: none;
+  max-height: none;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+/* Ensure math doesn't break responsive layout */
+mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Math in dark mode */
+.dark mjx-container {
+  color: #e5e5e5;
+}
+
+/* =====================================================
+   NON-HIGHLIGHTED CODE BLOCKS (Plain text, BibTeX, etc.)
+   Fix visibility for code blocks without syntax highlighting
+   IMPORTANT: Only targets blocks WITHOUT language classes 
+   to preserve syntax highlighting for Python, JS, etc.
+   ===================================================== */
+
+/* Plain text/generic code blocks that aren't syntax highlighted */
+/* Only target blocks that are explicitly plain text */
+.article-post .language-text .highlight,
+.article-post .language-plaintext .highlight,
+.article-post .language-none .highlight {
+  background: var(--pre-bg) !important;
+  color: var(--pre-code-color) !important;
+  
+  pre, code {
+    color: var(--pre-code-color) !important;
+    background: transparent !important;
+  }
+  
+  /* Override all tokens for plain text */
+  span {
+    color: var(--pre-code-color) !important;
+  }
+}
+
+/* Fix BibTeX/citation code blocks specifically */
+.dark .article-post .language-bibtex .highlight pre,
+.dark .article-post .language-text .highlight pre,
+.dark .article-post .language-plaintext .highlight pre {
+  color: var(--pre-code-color);
+}
+
+/* Plain code blocks without language specification - make text visible */
+.dark .article-post div.highlighter-rouge:not([class*="language-"]) .highlight {
+  background: var(--pre-bg);
+  color: var(--pre-code-color);
+  
+  pre, code, span {
+    color: var(--pre-code-color);
+  }
+}
+
+/* Directory tree structure styling */
+.dark .article-post .language- .highlight,
+.dark .article-post .language-text .highlight,
+.dark .article-post .language-plaintext .highlight {
+  background: var(--pre-bg) !important;
+  
+  pre, code {
+    color: var(--pre-code-color) !important;
+  }
+  
+  /* Tree structure characters */
+  .err {
+    color: #858585 !important;
+    background: transparent !important;
+  }
+  
+  /* Comments in tree */
+  .c, .c1, .cm {
+    color: #6a9955 !important;
+  }
+}
+
+/* Fix word-wrap and overflow for BibTeX citations */
+.article-post .highlight pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* Light mode equivalents */
+body:not(.dark) .article-post div.highlighter-rouge:not([class*="language-"]) .highlight {
+  background: var(--pre-bg);
+  color: var(--pre-code-color);
+  
+  pre, code, span {
+    color: var(--pre-code-color);
+  }
+}
+
+/* =====================================================
+   LATEX-LIKE CITATION SYSTEM
+   Academic-style references and bibliography
+   
+   All styling derived from central CSS variables in base.scss:
+   - Typography: --base-font-size, --font-body
+   - Colors: --text-color, --text-muted, --heading-color
+   - Links: --link-color, --link-hover
+   - Accents: --accent-color
+   - Borders: --hr-color, --table-border
+   ===================================================== */
+
+/* Inline citation styling */
+.citation {
+  font-size: calc(var(--base-font-size) * 0.9);
+  font-family: var(--font-body);
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.citation-link {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  padding: 0 1px;
+  border-radius: 2px;
+  
+  &:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+}
+
+.citation-missing {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.citation-highlight {
+  background-color: rgba(var(--accent-rgb), 0.25);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+/* Bibliography source block (hidden) */
+.bibliography-source {
+  display: none !important;
+}
+
+/* =====================================================
+   ACADEMIC REFERENCES SECTION
+   Clean, scholarly bibliography formatting
+   Supports: APA, IEEE, Chicago, Vancouver styles
+   Style controlled via _config.yml citation_style
+   ===================================================== */
+
+/* Generated references container */
+[data-generated="references"] {
+  margin-top: calc(var(--base-font-size) * 2.5);
+  padding-top: calc(var(--base-font-size) * 1.5);
+  border-top: 2px solid var(--hr-color);
+  
+  /* References heading */
+  h2 {
+    font-size: calc(var(--base-font-size) * 1.5);
+    font-family: var(--font-body);
+    font-weight: 700;
+    margin-bottom: calc(var(--base-font-size) * 1.5);
+    color: var(--heading-color);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* References ordered list - academic style with hanging indent */
+.references-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: bib-counter;
+}
+
+/* Individual bibliography entry - clean academic formatting */
+.bib-entry {
+  display: block;
+  position: relative;
+  padding-left: calc(var(--base-font-size) * 2.2);
+  margin-bottom: calc(var(--base-font-size) * 1);
+  line-height: 1.65;
+  font-size: calc(var(--base-font-size) * 0.95);
+  font-family: var(--font-body);
+  color: var(--text-color);
+  text-align: left;
+  counter-increment: bib-counter;
+  
+  /* Reference number (in brackets) - aligned with first line of text */
+  &::before {
+    content: "[" counter(bib-counter) "]";
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 1.65;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-size: calc(var(--base-font-size) * 0.95);
+    min-width: calc(var(--base-font-size) * 2);
+  }
+  
+  /* Hanging indent for wrapped lines */
+  text-indent: 0;
+  
+  /* Target highlight - transparent, no background */
+  &:target {
+    /* No background - clean academic style */
+  }
+  
+  /* Italic text (titles, venues) */
+  em {
+    font-style: italic;
+  }
+  
+  /* Links in references */
+  a {
+    color: var(--link-color);
+    text-decoration: none;
+    word-break: break-all;
+    
+    &:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+  }
+}
+
+/* No highlight animation needed - keeping it clean */
+
+/* Legacy class support */
+.references-section {
+  margin-top: calc(var(--base-font-size) * 2.5);
+  padding-top: calc(var(--base-font-size) * 1.5);
+  border-top: 2px solid var(--hr-color);
+}
+
+.references-title {
+  font-size: calc(var(--base-font-size) * 1.5);
+  font-family: var(--font-body);
+  font-weight: 700;
+  margin-bottom: calc(var(--base-font-size) * 1.5);
+  color: var(--heading-color);
+}
+
+/* Deprecated - keeping for backward compatibility */
+.bib-number {
+  display: none;
+}
+
+.bib-content {
+  flex: 1;
+  font-size: calc(var(--base-font-size) * 0.95);
+  font-family: var(--font-body);
+  color: var(--text-color);
+}
+
+.bib-authors {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.bib-year {
+  color: var(--text-color);
+}
+
+.bib-title {
+  color: var(--text-color);
+}
+
+.bib-journal,
+.bib-booktitle {
+  font-style: italic;
+  color: var(--text-color);
+}
+
+.bib-volume {
+  font-style: italic;
+}
+
+.bib-doi,
+.bib-url,
+.bib-arxiv {
+  font-size: calc(var(--base-font-size) * 0.9);
+  color: var(--link-color);
+  word-break: break-all;
+  
+  &:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+}
+
+/* Note: Dark mode styling is handled automatically via CSS variables
+   defined in base.scss. All citation colors use:
+   - --text-color, --text-muted, --text-strong for text
+   - --link-color, --link-hover for links
+   - --heading-color for titles
+   - --hr-color for borders
+   - --table-row-hover for hover states
+   - --accent-rgb for highlights
+   These variables automatically switch values in dark mode. */
+
+/* =====================================================
+   ACADEMIC NUMBERING SYSTEM
+   LaTeX-like figures, tables, equations, and algorithms
+   with automatic numbering and cross-references
+   ===================================================== */
+
+/* Academic Figure styling */
+.academic-figure {
+  margin: calc(var(--base-font-size) * 1.5) 0;
+  padding: 0;
+  text-align: center;
+  
+  .figure-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--base-font-size) * 0.5);
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    
+    /* Support for side-by-side images */
+    &.figure-row {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      
+      img {
+        flex: 1 1 auto;
+        min-width: 200px;
+      }
+    }
+  }
+  
+  .figure-caption {
+    margin-top: calc(var(--base-font-size) * 0.75);
+    font-size: calc(var(--base-font-size) * 0.9);
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.5;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    strong {
+      color: var(--text-strong);
+      font-weight: 600;
+    }
+  }
+}
+
+/* Academic Table styling */
+.academic-table {
+  margin: calc(var(--base-font-size) * 1.5) 0;
+  overflow-x: auto;
+  
+  .table-caption {
+    font-size: calc(var(--base-font-size) * 0.9);
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: calc(var(--base-font-size) * 0.5);
+    line-height: 1.5;
+    
+    strong {
+      color: var(--text-strong);
+      font-weight: 600;
+    }
+  }
+  
+  .table-content {
+    display: flex;
+    justify-content: center;
+    
+    table {
+      border-collapse: collapse;
+      font-size: calc(var(--base-font-size) * 0.95);
+      
+      th, td {
+        border: 1px solid var(--table-border);
+        padding: calc(var(--base-font-size) * 0.4) calc(var(--base-font-size) * 0.75);
+        text-align: left;
+      }
+      
+      th {
+        background: var(--table-header-bg);
+        font-weight: 600;
+        color: var(--heading-color);
+      }
+      
+      tr:nth-child(even) {
+        background: var(--table-row-alt);
+      }
+      
+      tr:hover {
+        background: var(--table-row-hover);
+      }
+    }
+  }
+}
+
+/* Academic Equation styling (numbered display equations) */
+.academic-equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: calc(var(--base-font-size) * 1.25) 0;
+  position: relative;
+  
+  .equation-content {
+    flex: 1;
+    text-align: center;
+    
+    /* Override MathJax display styling to integrate with our layout */
+    mjx-container[jax="CHTML"][display="true"] {
+      margin: 0 !important;
+    }
+  }
+  
+  .equation-number {
+    position: absolute;
+    right: 0;
+    font-size: calc(var(--base-font-size) * 0.95);
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    font-weight: 500;
+    padding-left: calc(var(--base-font-size) * 1);
+    white-space: nowrap;
+    
+    @media (max-width: 600px) {
+      position: static;
+      margin-left: calc(var(--base-font-size) * 0.5);
+    }
+  }
+}
+
+/* Academic Algorithm styling */
+.academic-algorithm {
+  margin: calc(var(--base-font-size) * 1.5) 0;
+  border: 1px solid var(--table-border);
+  border-radius: 4px;
+  overflow: hidden;
+  
+  .algorithm-header {
+    background: var(--table-header-bg);
+    padding: calc(var(--base-font-size) * 0.5) calc(var(--base-font-size) * 0.75);
+    font-weight: 600;
+    font-size: calc(var(--base-font-size) * 0.95);
+    color: var(--heading-color);
+    border-bottom: 1px solid var(--table-border);
+  }
+  
+  .algorithm-content {
+    padding: calc(var(--base-font-size) * 0.75) calc(var(--base-font-size) * 1);
+    font-family: var(--font-code);
+    font-size: calc(var(--base-font-size) * 0.9);
+    line-height: 1.6;
+    background: var(--pre-bg);
+    color: var(--pre-code-color);
+    white-space: pre-wrap;
+    
+    /* Algorithm keywords */
+    .kw {
+      font-weight: 600;
+      color: var(--link-color);
+    }
+    
+    /* Algorithm comments */
+    .comment {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+  }
+}
+
+/* Cross-reference links */
+.ref-link,
+.eqref-link {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+}
+
+.ref-error {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Scroll offset for anchor navigation (accounts for any fixed/sticky headers) */
+.academic-figure,
+.academic-table,
+.academic-equation,
+.academic-algorithm {
+  scroll-margin-top: 100px;
+}
+
+/* Scroll offset for headings with IDs (for TOC links and direct navigation) */
+h1[id], h2[id], h3[id], h4[id], h5[id], h6[id],
+.bib-entry,
+.references-section,
+[id]:target {
+  scroll-margin-top: 100px;
+}
+
+/* Highlight target when navigating to it */
+.academic-figure:target,
+.academic-table:target,
+.academic-equation:target,
+.academic-algorithm:target {
+  animation: academic-highlight 2s ease-out;
+}
+
+@keyframes academic-highlight {
+  0% {
+    background-color: rgba(var(--accent-rgb), 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* ── RTL support for Kurdish / Arabic / Persian posts ── */
+.blog-post-content.rtl {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+
+  h1, h2, h3, h4, h5, h6 {
+    text-align: right !important;
+    font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+  }
+
+  .post-meta {
+    direction: ltr;
+    text-align: right;
+  }
+
+  .article-post {
+    direction: rtl;
+    text-align: right;
+
+    p, li, td, th, figcaption, blockquote, summary, details {
+      text-align: right !important;
+      direction: rtl;
+      line-height: 2;
+      font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+    }
+
+    ol, ul {
+      padding-right: 1.5em;
+      padding-left: 0;
+    }
+
+    blockquote {
+      border-right: 4px solid var(--accent-color, #007bff);
+      border-left: none;
+      padding-right: 1em;
+      padding-left: 0;
+    }
+
+    code, pre {
+      direction: ltr;
+      text-align: left !important;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .MathJax, mjx-container {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .MathJax_Display, mjx-container[display="true"] {
+      direction: ltr;
+      text-align: center !important;
+    }
+  }
+}
+
+/* RTL wrapper: TOC on the right side */
+.blog-post-wrapper.rtl-wrapper {
+  @media (min-width: 1024px) {
+    grid-template-columns: minmax(0, 800px) 220px !important;
+    margin-right: 0 !important;
+    margin-left: 220px;
+  }
+
+  @media (min-width: 1300px) {
+    margin-left: 180px;
+  }
+
+  .toc-sidebar {
+    direction: rtl;
+    order: 2;
+
+    .toc-nav {
+      padding-right: 0;
+      padding-left: 1rem;
+      text-align: right;
+    }
+
+    .toc-title {
+      text-align: right;
+      font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+    }
+
+    ul {
+      padding-right: 0.75em;
+      padding-left: 0;
+
+      li {
+        text-align: right;
+
+        a {
+          direction: rtl;
+          text-align: right;
+          font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+          border-left: none;
+          padding-left: 0;
+          border-right: 2px solid transparent;
+          padding-right: 0.75rem;
+
+          &:hover {
+            border-right-color: var(--link-color);
+            border-left-color: transparent;
+          }
+
+          &.active {
+            border-right-color: var(--accent-color);
+            border-left-color: transparent;
+          }
+        }
+
+        ul {
+          margin-left: 0;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+/* --- Publication abstract toggle and "All …" section links --- */
+.publication-abstract {
+  margin-top: 0.75rem;
+  font-size: 0.92em;
+}
+.publication-abstract summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--accent-color);
+  list-style: none;
+}
+.publication-abstract summary::before { content: "▸ "; }
+.publication-abstract[open] summary::before { content: "▾ "; }
+.publication-abstract-body {
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+}
+.section-more {
+  text-align: right;
+  margin: 0.5rem 0 0;
+  font-size: 0.95em;
+}
+
+/* --- About photo panel (behind the profile picture) --- */
+.about-row { position: relative; }
+.about-row--backdrop .about-media { position: relative; z-index: 1; padding-top: 1.75rem; }
+.about-row--backdrop .about-media .profile-img {
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.about-row--backdrop .about-text { position: relative; z-index: 1; }
+.about-backdrop {
+  position: absolute;
+  top: 0; bottom: 0; left: 15px;
+  width: calc(25% - 30px);
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #0a0d16;
+  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+.about-backdrop__media { position: absolute; inset: 0; }
+.about-backdrop__media img {
+  position: absolute; inset: 0;
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 40%;
+}
+.about-backdrop__media::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(6, 9, 18, 0.38) 0%, rgba(6, 9, 18, 0.06) 40%, rgba(6, 9, 18, 0.12) 72%, rgba(6, 9, 18, 0.78) 100%);
+}
+.about-backdrop__caption {
+  position: absolute; left: 1.2rem; right: 1.2rem; bottom: 1.2rem; z-index: 1;
+  display: flex; flex-direction: column; gap: 0.2rem;
+  font-size: 0.78rem; font-weight: 500; line-height: 1.4;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+.about-backdrop__caption-sub { font-size: 0.7rem; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.6); }
+html.light .about-backdrop, body:not(.dark) .about-backdrop { border-color: rgba(0, 0, 0, 0.08); }
+@media (max-width: 991.98px) { .about-backdrop { width: calc(33.3333% - 30px); } }
+@media (max-width: 767.98px) {
+  /* phones: the panel becomes a fixed-height banner with the portrait inside it */
+  .about-backdrop { right: 15px; bottom: auto; width: auto; height: 380px; }
+  .about-row--backdrop .about-media { min-height: 380px; padding-top: 2.5rem; margin-bottom: 1.25rem; }
+  .about-backdrop__media img { object-position: 50% 55%; }
+}
+@media print { .about-backdrop { display: none; } }
+.site-footer__credit {
+  margin: 0.6rem 0 0; font-size: 0.78rem; text-align: center;
+  color: var(--text-muted);
+}
+
+/* =====================================================================
+   SITE STYLE — "editorial light"
+   Own look for da-na-deri.github.io: warm paper background, deep teal
+   accent, serif headings (IBM Plex Serif), light navbar, photo panel on
+   the right. Dark mode remains available through the toggle.
+   Delete this block to return to the theme's default look.
+   ===================================================================== */
+:root {
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-heading: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  --code-font-family: 'IBM Plex Mono', Menlo, Consolas, monospace;
+}
+html.light, html.light body, html.light body.dark, body:not(.dark) {
+  --bg-color: #f8f5ee !important;
+  --intro-bg: #efebe1 !important;
+  --text-color: #1f2328;
+  --text-strong: #14181c;
+  --heading-color: #14181c;
+  --text-muted: #5b6168;
+  --accent-color: #FF4000;
+  --accent-hover: #D93600;
+  --accent-rgb: 255, 64, 0;
+  --accent-light: #ffd9cc;
+  --link-color: #E63A00;
+  --link-hover: #B32D00;
+  --card-border: #e4dfd3;
+  --nav-bg: #f9f7f2;
+  --nav-text: #1f2328;
+  --nav-border: #e4dfd3;
+  --icon-color: #E63A00;
+  --icon-hover: #B32D00;
+  --code-color: #D93600;
+  --code-bg: rgba(255, 64, 0, 0.10);
+}
+body { font-family: var(--font-body); }
+h1, h2, h3, h4, .section-title, .header-left h1, .posttitle, .publication-card-title, .blog-card-title, .featured-card-title {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+/* header */
+.header-left h1 { font-size: 3.4rem; font-weight: 600; }
+.header-left h2 { font-family: var(--font-body); font-size: 1.7rem; font-weight: 400; letter-spacing: 0; }
+/* section titles: left-aligned with a short accent rule */
+.section-title {
+  text-align: left !important;
+  font-size: 2.1rem;
+  font-weight: 600;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.6rem;
+  position: relative;
+  border-bottom: 1px solid var(--card-border);
+}
+.section-title::after {
+  content: ''; position: absolute; left: 0; bottom: -1px;
+  width: 48px; height: 2px; background: var(--accent-color);
+}
+/* light navbar: no black bar; subtle bottom border */
+html:not(.dark) .main-navigation, html:not(.dark) .navbar.main-navigation {
+  background: var(--nav-bg) !important;
+  border-bottom: 1px solid var(--nav-border) !important;
+  box-shadow: none !important;
+}
+html:not(.dark) .main-navigation .nav-link { color: var(--text-color) !important; }
+html:not(.dark) .main-navigation .nav-link:hover, html:not(.dark) .main-navigation .nav-link.active, html:not(.dark) .main-navigation .active > .nav-link {
+  color: var(--accent-color) !important; background: transparent !important;
+}
+html:not(.dark) .main-navigation .theme-toggle-btn { color: var(--text-color) !important; border-color: var(--nav-border) !important; background: transparent !important; }
+/* round icon buttons in the header: outlined, teal */
+html:not(.dark) .header-right .icons .button--sacnite {
+  background: transparent !important; color: var(--accent-color) !important;
+  border: 1.5px solid var(--accent-color) !important; box-shadow: none !important;
+}
+html:not(.dark) .header-right .icons .button--sacnite:hover { background: var(--accent-color) !important; color: #fff !important; }
+/* cards */
+.publication-card, .blog-card, .featured-card { border-radius: 10px; }
+html:not(.dark) .publication-card, html:not(.dark) .blog-card, html:not(.dark) .featured-card { background: #fffdf9; }
+.publication-card:hover { box-shadow: 0 6px 20px rgba(20, 24, 28, 0.08); }
+/* photo panel on the right of the About text */
+@media (min-width: 768px) {
+  .about-row--backdrop { display: flex; align-items: stretch; }
+  .about-row--backdrop .about-media { order: 2; float: none; }
+  .about-row--backdrop .about-text { order: 1; float: none; }
+  .about-backdrop { left: auto; right: 15px; }
+}
+.about-backdrop { border-radius: 10px; }
+html:not(.dark) .about-backdrop { border-color: #e4dfd3; }
+/* about section background: let it blend into the page */
+html:not(.dark) .intro-container { background: transparent !important; }
+/* navbar links in light mode: the theme hardcodes white text and red tints */
+html:not(.dark) .main-navigation .navbar-nav > li > a { color: var(--text-color) !important; }
+html:not(.dark) .main-navigation .navbar-nav > li > a:hover,
+html:not(.dark) .main-navigation .navbar-nav > li > a:focus { color: var(--accent-color) !important; background-color: rgba(255, 64, 0, 0.10) !important; }
+html:not(.dark) .main-navigation .navbar-nav > li.active > a { color: var(--accent-color) !important; background-color: rgba(255, 64, 0, 0.16) !important; font-weight: 500; }
+html:not(.dark) .main-navigation .navbar-nav > li.active > a:hover { background-color: rgba(255, 64, 0, 0.22) !important; }
+html:not(.dark) .main-navigation .navbar-toggle .icon-bar { background-color: var(--text-color) !important; }
+/* inline code in light mode: teal instead of the theme's red */
+html:not(.dark) code:not(pre code) { color: #D93600 !important; background: rgba(255, 64, 0, 0.10) !important; }
+/* keep the "Email:" label and address on one line when there is room */
+.header-right p { white-space: nowrap; }
+@media (max-width: 991px) { .header-right p { white-space: normal; } }
+
+/* =====================================================================
+   SITE STYLE — graphite + red-orange (#FF4000) dark palette (default) + homepage hero band
+   ===================================================================== */
+html.dark, html.dark body, body.dark {
+  --bg-color: #121212 !important;
+  --intro-bg: #181818 !important;
+  --card-bg: #1c1c1c;
+  --card-border: #2a2a2a !important;
+  --text-color: #ececec !important;
+  --text-strong: #ffffff !important;
+  --heading-color: #f5f5f5 !important;
+  --text-muted: #a1a1a1 !important;
+  --accent-color: #FF4000 !important;      /* accents: rules, menu, icons, buttons */
+  --accent-hover: #FF6A33 !important;
+  --accent-rgb: 255, 64, 0 !important;
+  --accent-light: #4a1c0a !important;
+  --link-color: #FF5A1F !important;        /* links in running text: a touch lighter than the accent */
+  --link-hover: #FF8552 !important;
+  --nav-bg: rgba(18, 18, 18, 0.86) !important;
+  --nav-border: #262626 !important;
+  --nav-text: #ececec !important;
+  --code-color: #FF8552 !important;
+  --code-bg: rgba(255, 64, 0, 0.20) !important;
+}
+html.dark .hero__about a, html.dark .publication-card a:not(.publication-link), html.dark .layout a:not(.title-link), html.dark .post-content a, html.dark .blog-post-content a { color: var(--link-color) !important; }
+html.dark .hero__about a:hover, html.dark .publication-card a:not(.publication-link):hover, html.dark .layout a:not(.title-link):hover, html.dark .post-content a:hover, html.dark .blog-post-content a:hover { color: var(--link-hover) !important; }
+html.dark .main-navigation { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+html.dark .publication-card, html.dark .blog-card, html.dark .featured-card, html.dark .projects-container .layout { background: var(--card-bg); }
+html.dark code:not(pre code) { color: #FF8552 !important; background: rgba(255, 64, 0, 0.20) !important; }
+html.dark .main-navigation .navbar-nav > li > a:hover,
+html.dark .main-navigation .navbar-nav > li > a:focus { background-color: rgba(255, 64, 0, 0.18) !important; }
+html.dark .main-navigation .navbar-nav > li.active > a { background-color: rgba(255, 64, 0, 0.26) !important; }
+
+/* menu: avatar and items grouped in the centre (desktop) */
+@media (min-width: 768px) {
+  .main-navigation .navbar-center { justify-content: center !important; }
+  .main-navigation .navbar-center > li:first-child { margin-right: 6px; }
+}
+
+/* hero band + intro */
+.hero { margin-top: 2.5rem; }
+.hero__grid { display: grid; grid-template-columns: 360px 1fr; gap: 44px; align-items: stretch; }
+.hero__band {
+  position: relative; min-height: 560px; border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--card-border); background: #0a0d16;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+.hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.hero__band::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(5, 8, 16, 0.55) 0%, rgba(5, 8, 16, 0.25) 38%, rgba(5, 8, 16, 0.08) 60%, rgba(5, 8, 16, 0.70) 100%);
+}
+.hero__cap {
+  position: absolute; bottom: 16px; left: 16px; z-index: 1;
+  font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88); background: rgba(5, 8, 16, 0.45); backdrop-filter: blur(6px);
+  padding: 0.35em 0.8em; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.hero__who { position: absolute; left: 22px; right: 22px; top: 26px; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+.hero__portrait {
+  width: 150px; height: 150px; border-radius: 50%; object-fit: cover; object-position: 50% 30%;
+  border: 3px solid rgba(255, 255, 255, 0.9); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); margin-bottom: 16px;
+}
+.hero__icons { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.hero__icons a, .hero__icons button {
+  display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(5, 8, 16, 0.55); border: 1px solid rgba(255, 255, 255, 0.35); color: #fff; font-size: 1.8rem;
+  backdrop-filter: blur(6px); transition: all .2s ease;
+}
+.hero__icons a:hover, .hero__icons button:hover { background: var(--accent-color); border-color: var(--accent-color); color: var(--bg-color); text-decoration: none; transform: translateY(-2px); }
+.hero__name { font-family: var(--font-heading); font-size: 4.6rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.08; margin: 0 0 0.35rem; color: var(--heading-color); }
+.hero__role { color: var(--text-muted); font-size: 1.8rem; margin: 0 0 0.3rem; }
+.hero__mail { color: var(--text-muted); font-size: 1.5rem; margin: 0 0 1.6rem; }
+.hero__mail i { margin-right: 0.4em; color: var(--accent-color); }
+.hero__about section { margin-top: 1.5rem; }
+.hero__about section:first-child { margin-top: 0; }
+.hero__about h3 {
+  font-family: var(--font-body); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent-color); margin: 0 0 0.6rem;
+}
+.hero__about p, .hero__about li { font-size: 1.6rem; line-height: 1.7; }
+.hero__about code { font-size: 1.4rem; }
+.hero__about .badge { font-size: 1.1rem; }
+.hero__about ul { padding-left: 1.2em; }
+.hero__about li { margin-bottom: 0.35em; }
+/* selected publications: grid of cards when there is more than one */
+.selected-section .publication-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 18px; }
+@media (max-width: 899px) {
+  .hero__grid { grid-template-columns: 1fr; gap: 28px; }
+  .hero__band { min-height: 420px; }
+  .hero__name { font-size: 3.4rem; }
+  .selected-section .publication-list { grid-template-columns: 1fr; }
+}
+/* entry titles that link out (software, experience) */
+.layout .details h3 a.title-link { color: inherit; text-decoration: none; border-bottom: 1px dashed transparent; }
+.layout .details h3 a.title-link:hover { color: var(--accent-color); border-bottom-color: var(--accent-color); }
+.layout .details .entry-links a { font-size: 1.4rem; color: var(--text-muted); }
+.layout .details .entry-links a:hover { color: var(--accent-color); text-decoration: none; }
+/* light/dark image pairs (publication thumbnails) */
+html.dark .theme-light-only { display: none !important; }
+html:not(.dark) .theme-dark-only { display: none !important; }
+.publication-card-image img { object-fit: contain; object-position: center; width: 100%; height: 100%; }
+/* image box background matches the animation background, so no visible letterboxing */
+html.dark .publication-card-image { background: #1c1c1c !important; }
+html:not(.dark) .publication-card-image { background: #f8f5ee !important; }
+.layout .details h3 a.title-link, .layout .details h3 a.title-link:visited { color: var(--heading-color) !important; font-style: normal !important; }
+.layout .details h3 a.title-link:hover { color: var(--accent-color) !important; }
+
+html.dark .publication-link, html.dark .publication-type-badge { background: rgba(255, 64, 0, 0.22) !important; border-color: rgba(255, 64, 0, 0.35) !important; color: #FF8552 !important; }
+html.dark .publication-link:hover { background: var(--accent-color) !important; color: #121212 !important; }
+html.dark .section-title::after { height: 3px; }
+
+/* --- social icons in the photo band: solid discs, colour only on hover --- */
+html.dark .hero__icons a, html.dark .hero__icons button {
+  background: #ffffff; border-color: #ffffff; backdrop-filter: none; -webkit-backdrop-filter: none;
+}
+html:not(.dark) .hero__icons a, html:not(.dark) .hero__icons button {
+  background: #121212; border-color: #121212; backdrop-filter: none; -webkit-backdrop-filter: none;
+}
+html.dark .hero__icons a, html.dark .hero__icons button, html.dark .hero__icons a i, html.dark .hero__icons button i { color: #121212 !important; }
+html:not(.dark) .hero__icons a, html:not(.dark) .hero__icons button, html:not(.dark) .hero__icons a i, html:not(.dark) .hero__icons button i { color: #ffffff !important; }
+html.dark .hero__icons a:hover, html.dark .hero__icons button:hover, html:not(.dark) .hero__icons a:hover, html:not(.dark) .hero__icons button:hover {
+  background: var(--accent-color); border-color: var(--accent-color);
+}
+html.dark .hero__icons a:hover, html.dark .hero__icons button:hover, html.dark .hero__icons a:hover i, html.dark .hero__icons button:hover i,
+html:not(.dark) .hero__icons a:hover, html:not(.dark) .hero__icons button:hover, html:not(.dark) .hero__icons a:hover i, html:not(.dark) .hero__icons button:hover i { color: #ffffff !important; }
+/* footer icons: same rule */
+html.dark .site-footer__social a, html.dark .site-footer__social button { color: #ffffff; }
+html:not(.dark) .site-footer__social a, html:not(.dark) .site-footer__social button { color: #121212; }
+.site-footer__social a:hover, .site-footer__social button:hover { color: var(--accent-color) !important; }
+/* photo caption: always white on a dark pill, whatever the theme */
+.hero__cap, html:not(.dark) .hero__cap, html.dark .hero__cap {
+  color: #ffffff !important; background: rgba(5, 8, 16, 0.55) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+
+/* --- /email/ page --- */
+.email-page { display: flex; justify-content: center; padding: 6rem 0 8rem; }
+.email-card {
+  max-width: 560px; width: 100%; text-align: center; padding: 3rem 2.5rem;
+  border: 1px solid var(--card-border); border-radius: 16px; background: var(--card-bg, var(--intro-bg));
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+}
+html:not(.dark) .email-card { background: #fffdf9; box-shadow: 0 10px 30px rgba(20, 24, 28, 0.08); }
+.email-card__icon { font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem; }
+.email-card__title { font-family: var(--font-heading); font-size: 2.6rem; margin: 0 0 1.2rem; }
+.email-card__addr { font-family: var(--code-font-family); font-size: 1.9rem; color: var(--text-color); user-select: all; word-break: break-all; margin: 0 0 1.2rem; }
+.email-card__hint { color: var(--text-muted); font-size: 1.4rem; line-height: 1.6; margin: 0 0 1.6rem; }
+.email-card__back { margin: 0; font-size: 1.4rem; }
+
+/* --- mobile menu in light mode: the theme hardcodes a dark panel and white bars --- */
+@media (max-width: 767px) {
+  html:not(.dark) .main-navigation .navbar-collapse,
+  html:not(.dark) .main-navigation .navbar-collapse.in,
+  html:not(.dark) .main-navigation .navbar-collapse.collapsing {
+    background-color: #f8f5ee !important;
+    border-top: 1px solid var(--nav-border) !important;
+    backdrop-filter: none !important;
+  }
+  html:not(.dark) .main-navigation .navbar-nav > li > a { color: var(--text-color) !important; }
+  html:not(.dark) .main-navigation .navbar-nav > li.active > a { color: var(--accent-color) !important; background-color: rgba(255, 64, 0, 0.12) !important; }
+  html:not(.dark) .main-navigation .navbar-toggle { border-color: var(--text-color) !important; }
+  html:not(.dark) .main-navigation .navbar-toggle .icon-bar { background-color: var(--text-color) !important; }
+  html:not(.dark) .main-navigation .theme-toggle-btn { color: var(--text-color) !important; border-color: var(--nav-border) !important; }
+}
+/* band shadow: symmetric, softer on the light theme */
+.hero__band { box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45); }
+html:not(.dark) .hero__band { box-shadow: 0 18px 44px rgba(20, 24, 28, 0.22), 0 2px 8px rgba(20, 24, 28, 0.10); }
+/* let the band's shadow spill past the container edge (the theme clips containers horizontally) */
+.container.hero { overflow: visible !important; }
+
+/* --- /cv/ page --- */
+.cv-page { padding-bottom: 4rem; }
+.cv-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.cv-head .section-title { flex: 1 1 auto; }
+.btn-cv { display: inline-flex; align-items: center; gap: .5em; font-size: 1.4rem; font-weight: 600; padding: .55em 1.1em; border-radius: 8px; background: var(--accent-color); color: #fff !important; text-decoration: none !important; }
+.btn-cv:hover { background: var(--accent-hover); }
+.cv-frame { border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; background: var(--card-bg, var(--intro-bg)); box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25); }
+.cv-frame object { display: block; width: 100%; height: 85vh; min-height: 640px; }
+.cv-empty { color: var(--text-muted); font-size: 1.6rem; }
+@media (max-width: 767px) { .cv-frame object { height: 70vh; min-height: 480px; } }

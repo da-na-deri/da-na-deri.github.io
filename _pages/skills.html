@@ -1,0 +1,11 @@
+---
+layout: default
+title: Skills
+permalink: /skills
+comments: false
+---
+<div class="container skills-container">
+    {%- if site.data.skills.size > 0 -%}
+    {%- include skill.html -%}
+    {%- endif -%}
+</div>

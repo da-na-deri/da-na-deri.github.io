@@ -1,0 +1,26 @@
+---
+title: "Categories"
+layout: default
+permalink: "/categories.html"
+---
+
+<div class="container listrecent">
+    {% assign displayed_posts = "" | split: "," %}
+
+    {% for category in site.categories %}
+        <div class="section-title col-md-12 mt-4">
+            <h2 id="{{ category[0] | replace: " ","-" }}">Category <span class="text-capitalize"><a href="/category/{{ category[0] | slugify }}">{{ category[0] }}</a></span></span></h2>
+        </div>
+
+        {% for post in category[1] %}
+            {% unless displayed_posts contains post.url %}
+                {% if post.title != null %}
+                {% if group == null or group == post.group %}
+                    {% include postbox.html %}
+                    {% assign displayed_posts = displayed_posts | push: post.url %}
+                {% endif %}
+                {% endif %}
+            {% endunless %}
+        {% endfor %}
+    {% endfor %}
+</div>

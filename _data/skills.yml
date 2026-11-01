@@ -1,0 +1,67 @@
+# =============================================================================
+# SKILLS — shown on /skills
+# =============================================================================
+
+- layout: left-skill
+  type: technical
+  items:
+    - category: Programming
+      items:
+        - name: R
+          tool-type: Languages
+          notes: Primary language — statistical modelling, Monte Carlo methods, R Markdown, package development
+          projects:
+            - name: ECMLE (CRAN)
+              link: https://cran.r-project.org/package=ECMLE
+        - name: Python
+          tool-type: Languages
+          notes: pandas, NumPy, SciPy, Matplotlib, scikit-learn
+        - name: Git & GitHub
+          tool-type: Tools
+          notes: Version control and reproducible, public research code
+        - name: Linux
+          tool-type: Tools
+        - name: LaTeX
+          tool-type: Tools
+          notes: Scientific writing and presentations
+
+- layout: left-skill
+  type: research
+  items:
+    - category: Methods
+      items:
+        - name: Bayesian inference and computation
+          tool-type: Statistics
+          notes: Model selection, evidence / marginal likelihood estimation, mixture models
+        - name: Monte Carlo methods
+          tool-type: Statistics
+        - name: Regression and nonparametric regression
+          tool-type: Statistics
+        - name: High-dimensional data analysis
+          tool-type: Statistics
+          notes: Penalized regression with shrinkage priors
+        - name: Probabilistic graphical models
+          tool-type: Machine learning
+          notes: Dynamic Bayesian networks
+        - name: Machine learning
+          tool-type: Machine learning
+    - category: Data & software
+      items:
+        - name: Data cleaning, wrangling and exploratory analysis
+          tool-type: Workflow
+        - name: Statistical modelling and visualisation
+          tool-type: Workflow
+        - name: R package development and reproducible computational workflows
+          tool-type: Workflow
+
+- layout: left-skill
+  type: language
+  items:
+    - name: Kurdish
+      proficiency: Native
+    - name: Farsi
+      proficiency: Fluent
+    - name: English
+      proficiency: Advanced
+    - name: French
+      proficiency: Advanced

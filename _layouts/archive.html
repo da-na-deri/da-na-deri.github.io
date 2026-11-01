@@ -1,0 +1,19 @@
+---
+layout: default
+title: Archive
+---
+
+<!-- Begin List Posts
+================================================== -->
+<section class="recent-posts">
+    <h3 class="section-title">Archive of posts with {{ page.type }} '{{ page.title }}'</h3>
+<div class="row listrecent">
+
+{% for post in page.posts %}
+
+    {% include postbox.html %}
+
+{% endfor %}
+
+</div>
+</section>
